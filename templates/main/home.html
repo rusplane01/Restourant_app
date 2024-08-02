@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>hhahahahahha</h1>
+
+<a href = "{% url 'auth_sys:login' %}">log3</a><br>
+
+<a href = "{% url 'auth_sys:register' %}">log2</a><br>
+
+{% if user.is_authenticated %}
+    <a href = "{% url 'auth_sys:logout' %}">log</a>
+{% endif %}
+
+{% endblock %}

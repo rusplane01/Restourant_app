@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST", action="{% url 'auth_sys:login'%}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">сохранить</button>
+</form>
+
+{% endblock content %}
