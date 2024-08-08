@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from main import models
+from django.views.generic import ListView
 
-def home(request):
-    return render(request, 'main/home.html')
+
+class RestaurantListView(ListView):
+    model = models.Restaurant
+    context_object_name = "Restaurants"
+    template_name = "main/home.html"
+
