@@ -9,6 +9,7 @@ class Category(models.Model):
 class Restaurant(models.Model):
     name = models.CharField(max_length=250)
     rate = models.IntegerField()
+    description = models.TextField()
     place = models.CharField(max_length=250)
     image = models.ImageField(upload_to="images/")
 

@@ -1,7 +1,54 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
+
+<div class="menu-box">
+    <div class="container">
+        <div class="row">
+            {% for restaurant in restaurants %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">{{restaurant.name}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="{% url 'main:restaurant_detail' restaurant.pk %}" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<div class="customer-reviews-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>Customer Reviews</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mr-auto ml-auto text-center">
+                <div id="reviews" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner mt-4">
+                        <div class="carousel-item text-center active">
+                            <div class="img-box p-1 border rounded-circle m-auto">
+                                <img class="d-block w-100 rounded-circle" src="static/images/rusplane01.jpg" alt="">
+                            </div>
+                            <h2 class="mt-4 mb-0">Rusplane01</h2>
+                            <h6 class="text-dark m-0">Web Developer</h6>
+                            <p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Customer Reviews -->
+
+            
 
 {% endblock %}

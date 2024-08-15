@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h4>{{restaurant.name}}</h4>
+    <p>{{restaurant.rate}}/10</p>
+    <p>{{restaurant.description}}</p>
+    <p>{{restaurant.place}}</p>
+    <p>{{restaurant.image}}</p>
+
+
+    {% for comment in restaurant.comments.all %}
+        <h3>{{comment.main_reason}}</h3>
+        <h3>{{comment.text}}</h3>
+        <h3>{{comment.rate}}</h3>
+
+
+    {% endfor %}
+
+    <div class="add-comment mt-4">
+        <h4>Додати коментар</h4>
+        <form action="{% url 'main:restaurant_detail' restaurant.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="btn btn-primary">Відправити</button>
+        </form>
+    </div>
+
+{% endblock %}

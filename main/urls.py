@@ -1,8 +1,9 @@
 from django.urls import path
-from . import views
+from .views import HomePage, RestaurantDetailView
 
 urlpatterns = [
-    path('', views.RestaurantListView, name='restaurants_list'),
+    path('', HomePage.as_view(), name='home_page'),
+    path('<int:pk>/', RestaurantDetailView.as_view(), name='restaurant_detail')
 ]
 
 app_name = 'main'
