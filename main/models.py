@@ -1,17 +1,19 @@
 from django.db import models
 
-class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True) # уникуе
-    def __str__(self):
-        return f'{self.name}'
-
-
 class Restaurant(models.Model):
     name = models.CharField(max_length=250)
     rate = models.IntegerField()
     description = models.TextField()
     place = models.CharField(max_length=250)
     image = models.ImageField(upload_to="images/")
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True) # уникуе
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, default='1', related_name='categories')
 
     def __str__(self):
         return f'{self.name}'

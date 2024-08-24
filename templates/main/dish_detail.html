@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">   
+    <img src="{{ dish.image.url }}" style="max-width: 300px;">
+    <h1>{{dish.name}}</h1>
+    <h2>{{dish.price}}</h2>
+    <h3>{{dish.description}}</h3>
+    <h2>{{dish.category}}</h2>
+</div>
+
+{% endblock %}

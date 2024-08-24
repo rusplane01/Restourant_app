@@ -32,13 +32,13 @@ class RestaurantDetailView(DetailView):
             pass
 
 
-class CategoryListView(ListView):
-    model = models.Category 
-    template_name = 'main/category_list.html'
-
-
 class MenuListView(ListView):
     model = models.Dish
     context_object_name = 'dishes'
     template_name = 'main/menu_list.html'
-    
+
+
+class DishDetailView(DetailView):
+    model = models.Dish
+    context_object_name = 'dish'
+    template_name = 'main/dish_detail.html'

@@ -2,20 +2,29 @@
 
 {% block content %}
 
-    <h4>{{restaurant.name}}</h4>
-    <p>{{restaurant.rate}}/10</p>
-    <p>{{restaurant.description}}</p>
-    <p>{{restaurant.place}}</p>
-    <p>{{restaurant.image}}</p>
+<div class="container">   
+    <img src="{{ restaurant.image.url }}" style="max-width: 300px;">
+    <h1>{{restaurant.name}}</h1>
+    <h2>rate: {{restaurant.rate}}/10</h2>
+    <h3>{{restaurant.description}}</h3>
+    <h2>place {{restaurant.place}}</h2>
+    <hr>
 
-
+    <h1>Coments:</h1>
+    <ol>
     {% for comment in restaurant.comments.all %}
-        <h3>{{comment.main_reason}}</h3>
-        <h3>{{comment.text}}</h3>
-        <h3>{{comment.rate}}</h3>
-
-
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h2 class="card-title">{{comment.main_reason}}</h2>
+            <h3 class="card-subtitle mb-2 text-body-secondary">{{comment.rate}}</h3>
+            <p class="card-text">{{comment.text}}</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+        <p></p>
     {% endfor %}
+    </ol>
 
     <div class="add-comment mt-4">
         <h4>Додати коментар</h4>
@@ -25,5 +34,6 @@
             <button type="submit" class="btn btn-primary">Відправити</button>
         </form>
     </div>
+</div>
 
 {% endblock %}

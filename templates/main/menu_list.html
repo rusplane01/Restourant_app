@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Start Menu -->
+<div class="menu-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <h2>Special Menu</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                </div>
+            </div>
+        </div>
+         
+        
+        <div class="row">
+            {% for dish in dishes %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{ dish.image.url }}" class="card-img-top" style="max-height: 180px;">
+                <div class="card-body">
+                  <h2 class="card-title">{{dish.name}}</h2>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">price: {{dish.price}}$</li>
+                  <li class="list-group-item">category: {{dish.category}}</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                  <a href="{% url 'main:dish_detail' dish.id %}" class="card-link">learn more</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        
+    </div>
+</div>    
+<!-- End Menu -->
+
+{% endblock %}
