@@ -16,7 +16,7 @@
          
         
         <div class="row">
-            {% for dish in dishes %}
+            {% for dish in restaurant.dishes.all %}
             <div class="card" style="width: 18rem;">
                 <img src="{{ dish.image.url }}" class="card-img-top" style="max-height: 180px;">
                 <div class="card-body">

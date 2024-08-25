@@ -2,8 +2,62 @@
 
 {% block content %}
 
+<!-- Start slides -->
+<div id="slides" class="cover-slides">
+    <ul class="slides-container">
+        <li class="text-center">
+            <img src="static/images/slider-01.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> Restaurant App</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view  <br> 
+                        trends to see any changes in performance over time.</p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'auth_sys:register' %}">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="static/images/slider-02.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> Restaurant App</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view  <br> 
+                        trends to see any changes in performance over time.</p>
+                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'auth_sys:register' %}">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="static/images/rusplane01.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br>Restaurant App</strong></h1>
+                        <p class="m-b-40">More interesting you can see on my GitHub</p>
+                        <p><a class="btn btn-success" href="#">https://github.com/rusplane01</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+<!-- End slides -->
 
+<div class="menu-box">
     <div class="container">
+        <div class="col-lg-12">
+            <div class="heading-title text-center">
+                <h2>Restaurant list</h2>
+            </div>
+        </div>
         <div class="row">
             {% for restaurant in restaurants %}
             <div class="card" style="width: 18rem;">
@@ -12,12 +66,14 @@
                 <h5 class="card-title">{{restaurant.name}}</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="{% url 'main:restaurant_detail' restaurant.pk %}" class="btn btn-primary">details</a>
-                <a href="{% url 'main:menu_list' restaurant.pk %}" class="btn btn-primary">menu</a>
+                <a href="{% url 'main:menu_list' restaurant.pk %}" class="btn-green">menu</a>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
+</div>
+
 
 
 <div class="customer-reviews-box">

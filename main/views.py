@@ -34,6 +34,7 @@ class RestaurantDetailView(DetailView):
 
 class MenuListView(ListView):
     model = models.Dish
+    
     context_object_name = 'dishes'
     template_name = 'main/menu_list.html'
 
