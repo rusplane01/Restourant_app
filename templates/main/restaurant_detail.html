@@ -1,40 +1,69 @@
 {% extends "base.html" %}
 
-{% load static %}
-
 {% block content %}
 
-<div class="container">   
-    <img src="{{ restaurant.image.url }}" style="max-width: 300px;">
-    <h1>{{restaurant.name}}</h1>
-    <h2>rate: {{restaurant.rate}}/10</h2>
-    <h3>{{restaurant.description}}</h3>
-    <h2>place {{restaurant.place}}</h2>
-    <hr>
-
-    <h1>Coments:</h1>
-    <ol>
-    {% for comment in restaurant.comments.all %}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-            <h2 class="card-title">{{comment.main_reason}}</h2>
-            <h3 class="card-subtitle mb-2 text-body-secondary">{{comment.rate}}</h3>
-            <p class="card-text">{{comment.text}}</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+<div class="menu-box">
+    <div class="container">
+        <div class="row">  
+            <div class="col-lg-3 col-md-6">
+                <img src="{{ restaurant.image.url }}" style="max-width: 300px;"> 
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h1>{{restaurant.name}}</h1>
+                <h2>rate: {{restaurant.rate}}/10</h2>
+                <h3>{{restaurant.description}}</h3>
+                <h2>place {{restaurant.place}}</h2>
             </div>
         </div>
-        <p></p>
-    {% endfor %}
-    </ol>
+        <hr>
 
-    <div class="add-comment mt-4">
-        <h4>Додати коментар</h4>
-        <form action="{% url 'main:restaurant_detail' restaurant.id %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ comment_form.as_p }}
-            <button type="submit" class="btn btn-primary">Відправити</button>
-        </form>
+
+        <div class="row">
+            {% for dish in restaurant.dishes.all %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{ dish.image.url }}" class="card-img-top" style="max-height: 180px;">
+                <div class="card-body">
+                  <h2 class="card-title">{{dish.name}}</h2>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">price: {{dish.price}}$</li>
+                  <li class="list-group-item">category: {{dish.category}}</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                  <a href="{% url 'main:dish_detail' dish.id %}" class="card-link">learn more</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <hr>
+
+
+        <h1>Coments:</h1>
+        <ol>
+        {% for comment in restaurant.comments.all %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                <h2 class="card-title">{{comment.main_reason}}</h2>
+                <h3 class="card-subtitle mb-2 text-body-secondary">{{comment.rate}}</h3>
+                <p class="card-text">{{comment.text}}</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+            <p></p>
+        {% endfor %}
+        </ol>
+
+        <div class="add-comment mt-4">
+            <h4>Додати коментар</h4>
+            <form action="{% url 'main:restaurant_detail' restaurant.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="btn btn-primary">Відправити</button>
+            </form>
+        </div>
     </div>
 </div>
 
