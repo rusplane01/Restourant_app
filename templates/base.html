@@ -15,8 +15,8 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="static/images/rusplane01.jpg" type="image/x-icon">
-    <link rel="apple-touch-icon" href="static/images/rusplane01.jpg">
+    <link rel="shortcut icon" href="{% static 'images/rusplane01.jpg' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{% static 'images/rusplane01.jpg' %}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">    
@@ -42,7 +42,7 @@
 			<div class="container">
 				<a class="navbar-brand" href="{% url 'main:home_page' %}">
 					<div class="img-box p-1 border rounded-circle m-auto">
-						<img class="d-block w-100 rounded-circle" src="static/images/rusplane01.jpg" alt="" style="max-height:45px;">
+						<img class="d-block w-100 rounded-circle" src="{% static 'images/rusplane01.jpg' %}" alt="" style="max-height:45px;">
 					</div>
 				</a>
 				<h2>Rusplane01/Restaurant App</h2>
@@ -133,17 +133,17 @@
 	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
 	<!-- ALL JS FILES -->
-	<script src="static/js/jquery-3.2.1.min.js"></script>
-	<script src="static/js/popper.min.js"></script>
-	<script src="static/js/bootstrap.min.js"></script>
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- ALL PLUGINS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-	<script src="static/js/jquery.superslides.min.js"></script>
-	<script src="static/js/images-loded.min.js"></script>
-	<script src="static/js/isotope.min.js"></script>
-	<script src="static/js/baguetteBox.min.js"></script>
-	<script src="static/js/form-validator.min.js"></script>
-    <script src="static/js/contact-form-script.js"></script>
-    <script src="static/js/custom.js"></script>
+	<script src="{% static 'js/jquery.superslides.min.js' %}"></script>
+	<script src="{% static 'js/images-loded.min.js' %}"></script>
+	<script src="{% static 'js/isotope.min.js' %}"></script>
+	<script src="{% static 'js/baguetteBox.min.js' %}"></script>
+	<script src="{% static 'js/form-validator.min.js' %}"></script>
+    <script src="{% static 'js/contact-form-script.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
 </body>
 </html>

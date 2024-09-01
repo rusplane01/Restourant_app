@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    {% if baskets %} 
+        <div class="row">  
+            {% for basket in baskets %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ dish.image.url }}" class="card-img-top" style="max-width: 200px;">
+                    <div class="card-body">
+                    <h2 class="card-title">{{product.dish.name}}</h2>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">price: {{product.dish.price}}$</li>
+                    <li class="list-group-item">category: {{product.dish.category}}</li>
+                    <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                    <a href="#" class="card-link">learn more</a>
+                    <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div> 
+    {% else %}
+        <h2>no items</h2>
+    {% endif %}
+     
+</div>
+
+{% endblock %}

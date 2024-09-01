@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=250)
@@ -17,7 +18,7 @@ class Category(models.Model):
 
     def __str__(self):
         return f'{self.name}'
-    
+
 
 class Dish(models.Model):
     image = models.ImageField(upload_to="images/")
@@ -36,10 +37,19 @@ class Comment(models.Model):
     text = models.TextField()
     rate = models.IntegerField()
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='authors')
 
     def __str__(self):
         return f'{self.restaurant} - {self.main_reason}'
 
+
+class Basket(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE, null=True)
+    quantity = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f'basket for {self.user.username}'
 
 
 
