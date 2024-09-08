@@ -2,31 +2,36 @@
 
 {% block content %}
 
-<div class="container">
-    {% if baskets %} 
-        <div class="row">  
-            {% for basket in baskets %}
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ dish.image.url }}" class="card-img-top" style="max-width: 200px;">
-                    <div class="card-body">
-                    <h2 class="card-title">{{product.dish.name}}</h2>
+<div class="menu-box">
+    <div class="container">
+        <div class="heading-title text-center">
+            <h2>Basket for {{request.user}}</h2>
+        </div>
+        {% if baskets %} 
+            <div class="row">  
+                {% for basket in baskets %}
+                    <div class="card" style="width: 18rem;">
+                        <!-- <img src="{{ basket.dish.image.url }}" class="card-img-top" style="height:260px; width:250px;"> -->
+                        <div class="card-body">
+                        <h2 class="card-title">{{basket.dish.name}}</h2>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Price: {{basket.dish.price}}$</li>
+                        <li class="list-group-item">Category: {{basket.dish.category}}</li>
+                        <li class="list-group-item"><a href="{% url 'main:dish_detail' basket.dish.id %}" class="">learn more...</a></li>
+                        </ul>
+                        <div class="card-body">
+                        <h3><a href="{% url 'main:basket_add' basket.dish.id %}" class="card-link">+ {{basket.quantity}} pieces</a><a href="{% url 'main:basket_remove' basket.id%}" class="card-link">remove</a></h3>
+                        
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item">price: {{product.dish.price}}$</li>
-                    <li class="list-group-item">category: {{product.dish.category}}</li>
-                    <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                    <a href="#" class="card-link">learn more</a>
-                    <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div> 
-    {% else %}
-        <h2>no items</h2>
-    {% endif %}
-     
+                {% endfor %}
+            </div> 
+        {% else %}
+            <h2>no items...</h2>
+        {% endif %}
+        
+    </div>
 </div>
 
 {% endblock %}

@@ -52,7 +52,7 @@
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="{% url 'main:home_page' %}">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="">contact us</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'main:basket'%}">basket</a></li>
 						<li class="nav-item"><a class="nav-link" href="">about</a></li>
 						
 						<li class="nav-item dropdown">
@@ -70,8 +70,10 @@
 		</nav>
 	</header>
 	<!-- End header -->
+
 	<p>ggg</p>
 	<p>ggg</p>
+
 	{% block content %}
 
     {% endblock %}

@@ -33,18 +33,20 @@ class RestaurantDetailView(DetailView):
             # Тут можна обробити випадок з невалідною формою
             pass
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        category = self.request.GET.get("category", "")
-        if category:
-            queryset = queryset.filter(category=category)
-        return queryset
-        
 
-class MenuListView(ListView):
-    model = models.Dish
-    context_object_name = 'dishes'
-    template_name = 'main/restaurant_detail.html'
+def dishes(request, category_id=None):
+    context = {'categories': models.Category.objects.all()}
+    if category_id:
+        context.update({'dishes': models.Dish.objects.filter(category_id=category_id)})
+    else:
+        context.update({'dishes': models.Dish.objects.all()})
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+# class MenuListView(ListView):
+#     model = models.Dish
+#     context_object_name = 'dishes'
+#     template_name = 'main/restaurant_detail.html'
 
 
 class DishDetailView(DetailView):
@@ -56,23 +58,35 @@ class DishDetailView(DetailView):
 def basket_view(request):
     user = request.user
     context = {
-        'baskets': basket.objects.filter(user=request.user)
+        'baskets': models.Basket.objects.filter(user=request.user)
     }
     return render(request, 'main/basket.html', context)
 
-def basket_ad(request, dish_id):
-    current_page = request.Meta.get('HTTP_REFERER')
-    dish = Dish.objects.get(id=product_id)
-    baskets = Basket.objects.filter(user=request.user, dish=dish)
+def basket_add(request, dish_id):
+    current_page = request.META.get('HTTP_REFERER')
+    dish = models.Dish.objects.get(id=dish_id)
+    baskets = models.Basket.objects.filter(user=request.user, dish=dish)
 
-    if not baskets.exsists:
-        Basket.objects.create(user=request.user, dish=dish, quantity=1)
+    if not baskets.exists():
+        models.Basket.objects.create(user=request.user, dish=dish, quantity=1)
         return HttpResponseRedirect(current_page)
     else:
         basket = baskets.first()
-        basket.quantity == 1
-        basket.save()
-        return HttpResponseRedirect(current_page)
+        if basket is not None:
+            basket.quantity += 1
+            basket.save()
+            return HttpResponseRedirect(current_page)
+
+
+def basket_remove(request, id):
+    basket = models.Basket.objects.get(id=id)
+    basket.quantity -= 1
+    basket.save()
+    if basket.quantity < 1:
+        basket.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 
 
 

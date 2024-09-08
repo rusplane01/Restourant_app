@@ -3,53 +3,58 @@
 {% block content %}
 
 <!-- Start slides -->
-<div id="slides" class="cover-slides">
-    <ul class="slides-container">
-        <li class="text-center">
-            <img src="static/images/slider-01.jpg" alt="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Restaurant App</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br> 
-                        trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'auth_sys:register' %}">Register</a></p>
+<div class="menu-box">
+    <div id="slides" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="static/images/slider-01.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br> Restaurant App</strong></h1>
+                            <p class="m-b-40">See how your users experience your website in realtime or view  <br> 
+                            trends to see any changes in performance over time.</p>
+                            <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'auth_sys:register' %}">Register</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
-        <li class="text-center">
-            <img src="static/images/slider-02.jpg" alt="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br> Restaurant App</strong></h1>
-                        <p class="m-b-40">See how your users experience your website in realtime or view  <br> 
-                        trends to see any changes in performance over time.</p>
-                        <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'auth_sys:register' %}">Register</a></p>
+            </li>
+            <li class="text-center">
+                <img src="static/images/slider-02.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br> Restaurant App</strong></h1>
+                            <p class="m-b-40">See how your users experience your website in realtime or view  <br> 
+                            trends to see any changes in performance over time.</p>
+                            <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'auth_sys:register' %}">Register</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
-        <li class="text-center">
-            <img src="static/images/rusplane01.jpg" alt="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Welcome To <br>Restaurant App</strong></h1>
-                        <p class="m-b-40">More interesting you can see on my GitHub</p>
-                        <p><a class="btn btn-success" href="#">https://github.com/rusplane01</a></p>
+            </li>
+            <li class="text-center">
+                <img src="static/images/rusplane01.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Welcome To <br>Restaurant App</strong></h1>
+                            <p class="m-b-40">More interesting you can see on my GitHub</p>
+                            <p><a class="btn btn-success" href="#">https://github.com/rusplane01</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
-    </ul>
-    <div class="slides-navigation">
-        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
     </div>
 </div>
 <!-- End slides -->
+
+
+
 
 <div class="menu-box">
     <div class="container">
@@ -61,19 +66,30 @@
         <div class="row">
             {% for restaurant in restaurants %}
             <div class="card" style="width: 18rem;">
-                <img src="{{ restaurant.image.url }}" class="card-img-top" style="max-width: 300px;">
+                <img src="{{ restaurant.image.url }}" class="card-img-top" style="width: 260px; height: 270px;">
                 <div class="card-body">
                 <h5 class="card-title">{{restaurant.name}}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">{{restaurant.description}}</p>
                 <a href="{% url 'main:restaurant_detail' restaurant.pk %}" class="btn btn-primary">details</a>
-                <!-- <a href="{% url 'main:menu_list' restaurant.pk %}" class="btn btn-primary">menu</a> -->
+                
                 </div>
             </div>
             {% endfor %}
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
-
+<hr>
 
 
 <div class="customer-reviews-box">

@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<div class="menu-box">
+<div class="about-section-box">
     <div class="container">
         <div class="row">  
             <div class="col-lg-3 col-md-6">
-                <img src="{{ restaurant.image.url }}" style="max-width: 300px;"> 
+                <img src="{{ restaurant.image.url }}" style="width: 270px; height: 290px;"> 
             </div>
             <div class="col-lg-3 col-md-6">
                 <h1>Name: {{restaurant.name}}</h1>
@@ -27,9 +27,9 @@
                   
                     <ul class="dropdown-menu">
                     {% for category in restaurant.categories.all %}
-                      <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                      <li><a class="dropdown-item" href="{% url 'main:category' category.id %}">{{ category.name }}</a></li>
                     {% endfor %}
-                      <li><a class="dropdown-item" href="{% url 'main:restaurant_detail' restaurant.id%}">all</a></li>
+                      <li><a class="dropdown-item" href="{% url 'main:restaurant_detail' restaurant.id %}">all</a></li>
                     </ul>
                   </div>
             </div>
@@ -37,18 +37,17 @@
         <div class="row">
             {% for dish in restaurant.dishes.all %}
             <div class="card" style="width: 18rem;">
-                <img src="{{ dish.image.url }}" class="card-img-top" style="max-width: 200px;">
+                <img src="{{ dish.image.url }}" class="card-img-top" style="height:260px; width:250px;">
                 <div class="card-body">
                   <h2 class="card-title">{{dish.name}}</h2>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">price: {{dish.price}}$</li>
-                  <li class="list-group-item">category: {{dish.category}}</li>
-                  <li class="list-group-item">A third item</li>
+                  <li class="list-group-item">Price: {{dish.price}}$</li>
+                  <li class="list-group-item">Category: {{dish.category}}</li>
+                  <li class="list-group-item"><a href="{% url 'main:dish_detail' dish.id %}" class="">learn more...</a></li>
                 </ul>
                 <div class="card-body">
-                  <a href="{% url 'main:dish_detail' dish.id %}" class="card-link">learn more</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <a href="{% url 'main:basket_add' dish.id %}" class="btn btn-success">Add to basket</a>
                 </div>
             </div>
             {% endfor %}
@@ -62,7 +61,7 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                 <h2 class="card-title">{{comment.main_reason}}</h2>
-                <h3 class="card-subtitle mb-2 text-body-secondary">my rate: {{comment.rate}}/10</h3>
+                <h3 class="card-subtitle mb-2 text-body-secondary">My rate: {{comment.rate}}/10</h3>
                 <p class="card-text">{{comment.text}}</p>
                 <h3>author: {{comment.author}}</h3>
                 </div>
