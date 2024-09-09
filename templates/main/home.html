@@ -69,13 +69,13 @@
                 <img src="{{ restaurant.image.url }}" class="card-img-top" style="width: 260px; height: 270px;">
                 <div class="card-body">
                 <h5 class="card-title">{{restaurant.name}}</h5>
-                <p class="card-text">{{restaurant.description}}</p>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content</p>
                 <a href="{% url 'main:restaurant_detail' restaurant.pk %}" class="btn btn-primary">details</a>
                 
                 </div>
             </div>
             {% endfor %}
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         </div>
     </div>
 </div>

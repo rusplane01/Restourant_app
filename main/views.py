@@ -40,7 +40,7 @@ def dishes(request, category_id=None):
         context.update({'dishes': models.Dish.objects.filter(category_id=category_id)})
     else:
         context.update({'dishes': models.Dish.objects.all()})
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    return render(request, 'main/restaurant_detail.html', context)
 
 
 # class MenuListView(ListView):

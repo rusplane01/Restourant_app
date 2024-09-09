@@ -27,9 +27,9 @@
                   
                     <ul class="dropdown-menu">
                     {% for category in restaurant.categories.all %}
-                      <li><a class="dropdown-item" href="{% url 'main:category' category.id %}">{{ category.name }}</a></li>
+                      <li><a class="dropdown-item" href="{% url 'main:category' restaurant.category.id %}">{{ category.name }}</a></li>
                     {% endfor %}
-                      <li><a class="dropdown-item" href="{% url 'main:restaurant_detail' restaurant.id %}">all</a></li>
+                      <li><a class="dropdown-item" href="#">all</a></li>
                     </ul>
                   </div>
             </div>
@@ -72,7 +72,7 @@
 
         <div class="add-comment mt-4">
             <h2>Add comment</h2>
-            <form action="{% url 'main:restaurant_detail' restaurant.id %}" method="post" enctype="multipart/form-data">
+            <form action="#" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ comment_form.as_p }}
                 <button type="submit" class="btn btn-primary">send comment</button>
