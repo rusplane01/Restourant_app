@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('auth_sys/', include('auth_sys.urls')),
-    path("accounts/login/", auth_views.LoginView.as_view(), name="login")
+    path("accounts/login/", auth_views.LoginView.as_view(), name="login"),
+    path('user_payment', include('user_payment.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

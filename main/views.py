@@ -43,12 +43,6 @@ def dishes(request, category_id=None):
     return render(request, 'main/restaurant_detail.html', context)
 
 
-# class MenuListView(ListView):
-#     model = models.Dish
-#     context_object_name = 'dishes'
-#     template_name = 'main/restaurant_detail.html'
-
-
 class DishDetailView(DetailView):
     model = models.Dish
     context_object_name = 'dish'
