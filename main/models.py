@@ -13,7 +13,7 @@ class Restaurant(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True) # уникуе
+    name = models.CharField(max_length=100, unique=True)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, default='1', related_name='categories')
 
     def __str__(self):
