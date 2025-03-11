@@ -26,7 +26,16 @@
                         </div>
                     </div>
                 {% endfor %}
-            </div> 
+
+                <div class="heading-title text-center">
+                    <h2>Pay your basket</h2>
+                </div>
+
+                <form enctype="multipart/form-data" method="post" role="product_page">
+                {% csrf_token %}
+                    <h2>Hi {{ request.user }}! To pay, click on this button <button type="submit" class="btn btn-success" href="{% url 'user_payment:product_page' %}" data-bind-href="pricing">Payment</button></h2>
+                </form>
+
         {% else %}
             <h2>no items...</h2>
         {% endif %}
